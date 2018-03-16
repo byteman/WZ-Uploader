@@ -1,4 +1,4 @@
-#include "updatehandler.h"
+#include "WZUploader.h"
 #include "Windows.h"
 #include "pcomm/PCOMM.H"
 #include <qdebug.h>
@@ -6,15 +6,15 @@
 static bool bRecv = false;
 static int postion = 0;
 static int total   = 0;
-static YzUploader *self = NULL;
-YzUploader::YzUploader():
+static WzUploader *self = NULL;
+WzUploader::WzUploader():
     m_state(0),
     m_port(0)
 {
     self = this;
 }
 
-bool YzUploader::closePort()
+bool WzUploader::closePort()
 {
     if(m_port <= 0) return true;
     return (sio_close(m_port)==SIO_OK);
@@ -27,7 +27,7 @@ static VOID CALLBACK CntIrq(int port)
     bRecv = true;
     qDebug() <<"cntIrq";
 }
-bool YzUploader::openPort(int port,int baud)
+bool WzUploader::openPort(int port,int baud)
 {
     if(sio_open(port) != SIO_OK)
     {
@@ -47,12 +47,12 @@ bool YzUploader::openPort(int port,int baud)
 
 }
 
-void YzUploader::sendMessage(int result, int pos, int total)
+void WzUploader::sendMessage(int result, int pos, int total)
 {
     emit updateResult(result,pos,total);
 }
 
-QString YzUploader::readAll()
+QString WzUploader::readAll()
 {
     char buffer[128] = {0,};
 
@@ -61,7 +61,7 @@ QString YzUploader::readAll()
     return buffer;
 
 }
-void YzUploader::writeString(QString msg)
+void WzUploader::writeString(QString msg)
 {
     sio_write(m_port,msg.toLatin1().data(),msg.length());
 }
@@ -75,7 +75,7 @@ int CALLBACK xCallback(long xmitlen, int buflen, char *buf, long flen)
     self->sendMessage(4,postion,total);
     return 0;
 }
-bool YzUploader::sendRequest()
+bool WzUploader::sendRequest()
 {
     //发送空格，等待回应.
     sio_write(m_port,"                   ",25);
@@ -83,7 +83,7 @@ bool YzUploader::sendRequest()
     qDebug() << "send space";
     return true;
 }
-bool YzUploader::dorun()
+bool WzUploader::dorun()
 {
     if(m_state > 0)
     {
@@ -171,7 +171,7 @@ bool YzUploader::dorun()
     return false;
 }
 
-bool YzUploader::startUpdate(QString file)
+bool WzUploader::startUpdate(QString file)
 {
 
     m_file = file;
@@ -181,7 +181,7 @@ bool YzUploader::startUpdate(QString file)
     return true;
 }
 
-bool YzUploader::stopUpdate()
+bool WzUploader::stopUpdate()
 {
     m_state = 0;
     closePort();
@@ -190,7 +190,7 @@ bool YzUploader::stopUpdate()
 }
 
 
-void YzUploader::run()
+void WzUploader::run()
 {
 
     while(dorun())

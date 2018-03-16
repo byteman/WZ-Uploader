@@ -4,11 +4,11 @@
 #include <QString>
 
 //class UpdateHandler : public CmdHandler,public QThread
- class YzUploader : public QThread
+ class WzUploader : public QThread
 {
      Q_OBJECT
 public:
-    YzUploader();
+    WzUploader();
 
     bool closePort();
 
@@ -18,6 +18,7 @@ public:
     bool openPort(int port, int baud);
  signals:
     void updateResult(int result, int pos, int total);
+    void debugMessage(QString msg);
 private:
     QString readAll();
     void run();

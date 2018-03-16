@@ -15,9 +15,9 @@ win32:LIBS += -lsetupapi -lwsock32 -lws2_32 -lAdvapi32
 INCLUDEPATH+=./3rdparty
 SOURCES += main.cpp\
         mainwindow.cpp \
-    updatehandler.cpp
+    WZUploader.cpp
 
 HEADERS  += mainwindow.h \
-    updatehandler.h
+    WZUploader.h
 
 FORMS    += mainwindow.ui
