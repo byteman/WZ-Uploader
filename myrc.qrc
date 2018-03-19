@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>cn.qm</file>
+        <file>en.qm</file>
+        <file>icon.ico</file>
+    </qresource>
+</RCC>
