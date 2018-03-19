@@ -11,6 +11,8 @@ UploadWindow::UploadWindow(QWidget *parent) :
     ui(new Ui::UploadWindow)
 {
     ui->setupUi(this);
+    setWindowFlags(windowFlags()& ~Qt::WindowMaximizeButtonHint);
+    setFixedSize(this->width(), this->height());
     this->setWindowTitle(tr("WzUpdate"));
     this->setWindowIcon(QIcon(":/icon.ico"));
     listPorts();

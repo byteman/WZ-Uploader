@@ -185,12 +185,13 @@ VOID CALLBACK CntIrq(int port)
 }
 bool WzUploader::openPort(int port,int baud)
 {
-    if(sio_open(port) != SIO_OK)
+    int err = sio_open(port);
+    if(err != SIO_OK)
     {
-
+        qDebug() << "openPort err=" << err;
         return false;
     }
-    int err  = sio_ioctl(port,B9600,P_NONE | BIT_8 | STOP_1);
+    err  = sio_ioctl(port,B9600,P_NONE | BIT_8 | STOP_1);
     if(err != SIO_OK)
     {
         return false;

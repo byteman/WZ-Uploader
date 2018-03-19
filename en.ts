@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="en_AS">
 <context>
     <name>MainWindow</name>
     <message>
@@ -42,92 +42,107 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uploadwindow.ui" line="28"/>
+        <location filename="uploadwindow.ui" line="34"/>
+        <source>English</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="uploadwindow.ui" line="47"/>
+        <source>中文</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="uploadwindow.ui" line="58"/>
         <source>Please Select SerialPort</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uploadwindow.ui" line="49"/>
+        <location filename="uploadwindow.ui" line="79"/>
         <source>SerialPort:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uploadwindow.ui" line="93"/>
-        <location filename="uploadwindow.ui" line="185"/>
+        <location filename="uploadwindow.ui" line="123"/>
+        <location filename="uploadwindow.ui" line="215"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uploadwindow.ui" line="107"/>
+        <location filename="uploadwindow.ui" line="137"/>
         <source>Please Select Update File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uploadwindow.ui" line="128"/>
+        <location filename="uploadwindow.ui" line="158"/>
         <source>SelectFile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uploadwindow.ui" line="157"/>
+        <location filename="uploadwindow.ui" line="187"/>
         <source>File...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uploadwindow.ui" line="199"/>
-        <location filename="uploadwindow.ui" line="250"/>
+        <location filename="uploadwindow.ui" line="229"/>
+        <location filename="uploadwindow.ui" line="280"/>
         <source>Update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uploadwindow.ui" line="207"/>
+        <location filename="uploadwindow.ui" line="237"/>
         <source>Progress</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uploadwindow.cpp" line="66"/>
+        <location filename="uploadwindow.cpp" line="14"/>
+        <source>WzUpdate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="uploadwindow.cpp" line="69"/>
         <source>Upload Files (*.bin)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uploadwindow.cpp" line="73"/>
-        <location filename="uploadwindow.cpp" line="139"/>
-        <location filename="uploadwindow.cpp" line="153"/>
+        <location filename="uploadwindow.cpp" line="76"/>
+        <location filename="uploadwindow.cpp" line="143"/>
+        <location filename="uploadwindow.cpp" line="171"/>
         <source>msg_err_title</source>
-        <translation type="unfinished"></translation>
+        <translation>Error</translation>
     </message>
     <message>
-        <location filename="uploadwindow.cpp" line="79"/>
+        <location filename="uploadwindow.cpp" line="82"/>
         <source>msg_info_title</source>
-        <translation type="unfinished"></translation>
+        <translation>Info</translation>
     </message>
     <message>
-        <location filename="uploadwindow.cpp" line="95"/>
+        <location filename="uploadwindow.cpp" line="98"/>
         <source>Request update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uploadwindow.cpp" line="98"/>
+        <location filename="uploadwindow.cpp" line="101"/>
         <source>Wait cmdline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uploadwindow.cpp" line="101"/>
+        <location filename="uploadwindow.cpp" line="104"/>
         <source>Wait CCCC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uploadwindow.cpp" line="114"/>
+        <location filename="uploadwindow.cpp" line="118"/>
         <source>Update successful</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uploadwindow.cpp" line="139"/>
-        <location filename="uploadwindow.cpp" line="153"/>
+        <location filename="uploadwindow.cpp" line="143"/>
+        <location filename="uploadwindow.cpp" line="171"/>
         <source>please select correct file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uploadwindow.cpp" line="158"/>
+        <location filename="uploadwindow.cpp" line="176"/>
         <source>Please reset device and click ok button</source>
         <translation type="unfinished"></translation>
     </message>
@@ -135,9 +150,9 @@
 <context>
     <name>WzUploader</name>
     <message>
-        <location filename="WZUploader.cpp" line="307"/>
+        <location filename="WZUploader.cpp" line="308"/>
         <source>Start update</source>
-        <translation type="unfinished"></translation>
+        <translation>Start update,please wait</translation>
     </message>
 </context>
 </TS>
