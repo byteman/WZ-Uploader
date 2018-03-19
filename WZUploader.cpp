@@ -307,10 +307,9 @@ bool WzUploader::dorun()
             {
                 sendDbgMessage(DEBUG_LEVEL,tr("Start update"));
                 if(rxStr.contains("C"))
-                //sleep(7);
                 {
                     //qDebug() << tr("ready send file") << m_file;
-
+                    sendDbgMessage(DEBUG_LEVEL,tr("ready send file"));
                     int err = sio_FtYmodemTx(m_port,(char*)m_file.toStdString().c_str(),xCallback,27);
                     if( err < 0)
                     {
@@ -326,6 +325,10 @@ bool WzUploader::dorun()
 
                     }
 
+                }
+                else
+                {
+                    sendDbgMessage(ERR_LEVEL,QString("Error : ->%s").arg(rxStr));
                 }
             }
             else if(m_state == 4)
