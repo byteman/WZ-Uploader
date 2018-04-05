@@ -270,10 +270,18 @@ bool WzUploader::dorun()
                 sendRequest();
                 break;
             case 2:
+                sendMessage(m_state,0,0);
+                m_sleep_ms = 1000;
+                break;
             case 3:
+                sendMessage(m_state,0,0);
+                m_sleep_ms = 1000;
+                writeString("update\r");
+                break;
             case 4:
                 sendMessage(m_state,0,0);
                 m_sleep_ms = 1000;
+            break;
         }
 
             //读取全部收到的数据.
@@ -297,7 +305,12 @@ bool WzUploader::dorun()
             {
                 if(rxStr.contains("MS:"))
                 {
-                    writeString("update\r\n");
+
+                    Flush();
+                    writeString("update\r");
+                    qDebug() << "send update";
+
+
                     m_sleep_ms = 1000;
                     m_state = 3;
                     m_count = 0;
@@ -307,6 +320,7 @@ bool WzUploader::dorun()
             {
                 sendDbgMessage(DEBUG_LEVEL,tr("Start update"));
                 if(rxStr.contains("C"))
+                    //rxStr.contains("C")
                 {
                     //qDebug() << tr("ready send file") << m_file;
                     sendDbgMessage(DEBUG_LEVEL,tr("ready send file"));
@@ -328,7 +342,9 @@ bool WzUploader::dorun()
                 }
                 else
                 {
-                    sendDbgMessage(ERR_LEVEL,QString("Error : ->%s").arg(rxStr));
+
+
+                    sendDbgMessage(ERR_LEVEL,QString("Error : ->%1").arg(rxStr));
                 }
             }
             else if(m_state == 4)
