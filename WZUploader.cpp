@@ -303,11 +303,11 @@ bool WzUploader::dorun()
 #if 1
             else if(m_state == 2)
             {
-                if(rxStr.contains("MS:"))
+                //if(rxStr.contains("Menu:"))
                 {
 
                     Flush();
-                    writeString("update\r");
+                    writeString("1\r");
                     qDebug() << "send update";
 
 
