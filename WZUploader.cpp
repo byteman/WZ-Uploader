@@ -241,7 +241,7 @@ void WzUploader::writeString(QString msg)
 int CALLBACK xCallback(long xmitlen, int buflen, char *buf, long flen)
 {
 /* Update receiving status */
-    //qDebug() << "send -> " << xmitlen << " total --> " <<flen;
+    qDebug() << "send -> " << xmitlen << " total --> " <<flen;
     postion = xmitlen;
     total = flen;
     self->sendMessage(4,postion,total);
@@ -322,19 +322,19 @@ bool WzUploader::dorun()
                 if(rxStr.contains("C"))
                     //rxStr.contains("C")
                 {
-                    //qDebug() << tr("ready send file") << m_file;
+                    qDebug() << tr("ready send file") << m_file;
                     sendDbgMessage(DEBUG_LEVEL,tr("ready send file"));
                     int err = sio_FtYmodemTx(m_port,(char*)m_file.toStdString().c_str(),xCallback,27);
                     if( err < 0)
                     {
-                        //qDebug() << tr("start failed") << err;
+                        qDebug() << tr("start failed") << err;
                         sendMessage(-1,0,0);
                         m_state  = 0;
 
                     }
                     else
                     {
-                        //qDebug() << "send ok";
+                        qDebug() << "send ok";
                         m_state = 4;
 
                     }
@@ -352,7 +352,7 @@ bool WzUploader::dorun()
                 if(rxStr.contains("Successfully"))
                 {
                     sendMessage(5,0,0);
-                    //qDebug() << "update ok";
+                    qDebug() << "update ok";
                     writeString("reset\r\n");
                     m_state = 0;
                 }

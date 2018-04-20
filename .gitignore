@@ -1,2 +1,10 @@
 *.user
 output
+debug
+Makefile
+*.Debug
+*.log
+ui_mainwindow.h
+ui_uploadwindow.h
+release
+*.Release

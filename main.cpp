@@ -3,6 +3,8 @@
 #include "uploadwindow.h"
 #include <QTranslator>
 #include <QSettings>
+#include "mylogger.h"
+#include <QDebug>
 void loadLang(QTranslator& translator)
 {
 
@@ -18,10 +20,14 @@ void loadLang(QTranslator& translator)
         translator.load(":/en.qm");
     }
 }
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
     QTranslator translator;
+    MyLogger::init("config.ini","WzUploader.log");
+    qDebug() << "start app";
     loadLang(translator);
     a.installTranslator(&translator);
     UploadWindow w;
