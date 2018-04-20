@@ -289,6 +289,7 @@ bool WzUploader::dorun()
             QString rxStr = readAll();
             sendDbgMessage(TRACE_LEVEL, rxStr);
 
+
             if(rxStr.length() <= 0)
             {
                 return true;
@@ -322,19 +323,19 @@ bool WzUploader::dorun()
                 if(rxStr.contains("C"))
                     //rxStr.contains("C")
                 {
-                    //qDebug() << tr("ready send file") << m_file;
+                    qDebug() << tr("ready send file") << m_file;
                     sendDbgMessage(DEBUG_LEVEL,tr("ready send file"));
                     int err = sio_FtYmodemTx(m_port,(char*)m_file.toStdString().c_str(),xCallback,27);
                     if( err < 0)
                     {
-                        //qDebug() << tr("start failed") << err;
+                        qDebug() << tr("start failed") << err;
                         sendMessage(-1,0,0);
                         m_state  = 0;
 
                     }
                     else
                     {
-                        //qDebug() << "send ok";
+                        qDebug() << "send ok";
                         m_state = 4;
 
                     }
