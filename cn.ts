@@ -148,7 +148,7 @@
         <translation>请选择正确的升级文件</translation>
     </message>
     <message>
-        <location filename="uploadwindow.cpp" line="151"/>
+        <location filename="uploadwindow.cpp" line="152"/>
         <source>FilePlace</source>
         <translation>请不要把升级文件放到中文目录下</translation>
     </message>

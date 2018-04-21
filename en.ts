@@ -148,9 +148,9 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="uploadwindow.cpp" line="151"/>
+        <location filename="uploadwindow.cpp" line="152"/>
         <source>FilePlace</source>
-        <translation type="unfinished"></translation>
+        <translation>Do not place files in the Chinese directory</translation>
     </message>
     <message>
         <location filename="uploadwindow.cpp" line="198"/>
