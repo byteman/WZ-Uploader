@@ -91,7 +91,7 @@ void UploadWindow::showStatusMessage(QString msg)
 }
 void UploadWindow::updateResult(int result, int pos, int total)
 {
-    qDebug() << result << pos << total;
+    //qDebug() << result << pos << total;
     //ui->progressBar->setMaximum(total);
     ui->btnUpdate->setEnabled(false);
     switch(result)
@@ -136,6 +136,7 @@ bool UploadWindow::checkFile(QString name)
         m_filename = name;
         return true;
     }
+
     return false;
 }
 void UploadWindow::on_pushButton_clicked()
@@ -143,6 +144,12 @@ void UploadWindow::on_pushButton_clicked()
     if(!checkFile(ui->lineEdit->text()))
     {
         QMessageBox::information(this,tr("msg_err_title"),tr("please select correct file"));
+        return;
+    }
+    if(!checkChinese(ui->lineEdit->text()))
+    {
+        QString title = "请不要把升级文件放到中文目录";
+        QMessageBox::information(this,tr("msg_err_title"),title);
         return;
     }
     ui->progressBar->setValue(0);
@@ -165,7 +172,19 @@ void UploadWindow::on_stackedWidget_currentChanged(int arg1)
         listPorts();
     }
 }
-
+bool UploadWindow::checkChinese(QString file)
+{
+    for(int i = 0; i < file.length();i++)
+    {
+        QChar x = file[i];
+        qDebug() <<x;
+        if(x >= 0x7F)
+        {
+            return false;
+        }
+    }
+    return true;
+}
 void UploadWindow::on_btnUpdate_clicked()
 {
     if(!checkFile(ui->lineEdit->text()))
@@ -173,6 +192,7 @@ void UploadWindow::on_btnUpdate_clicked()
         QMessageBox::information(this,tr("msg_err_title"),tr("please select correct file"));
         return;
     }
+
 
     wz.startUpdate(m_filename);
     showInfoMessage(tr("Please reset device and click ok button"));

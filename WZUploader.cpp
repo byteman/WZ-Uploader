@@ -259,6 +259,7 @@ bool WzUploader::sendRequest()
     m_sleep_ms = 100;
     return true;
 }
+
 bool WzUploader::dorun()
 {
     if(m_state > 0)
@@ -276,7 +277,7 @@ bool WzUploader::dorun()
             case 3:
                 sendMessage(m_state,0,0);
                 m_sleep_ms = 1000;
-                writeString("update\r");
+
                 break;
             case 4:
                 sendMessage(m_state,0,0);
@@ -287,7 +288,7 @@ bool WzUploader::dorun()
             //读取全部收到的数据.
 
             QString rxStr = readAll();
-            sendDbgMessage(TRACE_LEVEL, rxStr);
+            sendDbgMessage(TRACE_LEVEL, "Recv---->" + rxStr);
 
             if(rxStr.length() <= 0)
             {
@@ -322,12 +323,52 @@ bool WzUploader::dorun()
                 if(rxStr.contains("C"))
                     //rxStr.contains("C")
                 {
+                    if(m_count++ < 3)
+                    {
+                        qDebug() << "wait CCC " << m_count;
+                        return true;
+                    }
+                    m_count= 0;
                     qDebug() << tr("ready send file") << m_file;
                     sendDbgMessage(DEBUG_LEVEL,tr("ready send file"));
+                    sleep(1);
+                    sio_flush(m_port,2);
                     int err = sio_FtYmodemTx(m_port,(char*)m_file.toStdString().c_str(),xCallback,27);
                     if( err < 0)
                     {
                         qDebug() << tr("start failed") << err;
+                        QString errDesc =tr("ok");
+                        switch(err)
+                        {
+                            case -1:
+                                errDesc=tr("PortInvalid");
+                                break;
+                            case -2:
+                                errDesc=tr("Timeout");
+                                break;
+                            case -3:
+                                errDesc=tr("UserAbort");
+                                break;
+                            case -4:
+                                errDesc=tr("CallbackAbort");
+                                break;
+                            case -5:
+                                errDesc=tr("OpenFile");
+                                break;
+                            case -6:
+                                errDesc=tr("CANAbort");
+                                break;
+                            case -7:
+                                errDesc=tr("ZModem");
+                                break;
+                            case -10:
+                                errDesc=tr("Win32Error");
+                                break;
+                            defalut:
+                                errDesc=tr("UnkownError");
+                                break;
+                        }
+                        sendDbgMessage(ERR_LEVEL,tr("YmodemError") + errDesc);
                         sendMessage(-1,0,0);
                         m_state  = 0;
 

@@ -48,6 +48,7 @@ private:
 
     // QObject interface
     void reloadLang(QString lang);
+    bool checkChinese(QString file);
 protected:
     virtual void timerEvent(QTimerEvent *);
 };
